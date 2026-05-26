@@ -7,7 +7,10 @@ from telegram.ext import (
 from gtts import gTTS
 import os
 
-TOKEN = os.getenv("BOT_TOKEN")
+TOKEN = os.environ.get("BOT_TOKEN")
+
+if not TOKEN:
+    raise ValueError("BOT_TOKEN is missing!")
 
 
 menu = ReplyKeyboardMarkup(
